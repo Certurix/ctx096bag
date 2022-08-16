@@ -11,6 +11,8 @@ But you can still use it and test it in a dev production!
 ### Installation Process
 Download the [guthscpbase module](https://github.com/Guthen/guthscpbase/tree/remaster-as-modules-based) and install it inside addons/ folder of your server.
 
+Download the [guthscp096 module](https://github.com/Certurix/vkxscp096/tree/remaster-as-modules-based) (Unofficial)
+
 Download this module by going on the [release page](https://github.com/Certurix/ctx096bag/releases)
 
 Install it on your server (Pre-release must not be installed on production server!)
