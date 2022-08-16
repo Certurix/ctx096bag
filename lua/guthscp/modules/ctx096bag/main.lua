@@ -9,29 +9,57 @@ local MODULE = {
 		base = "2.0.0",
 		vkxscp096 = "2.0.0",
 	},
+	requires = {
+		["server/"] = guthscp.REALMS.SERVER,
+		["shared/"] = guthscp.REALMS.SHARED,
+	},
 }
 --  config
-MODULE.config = {
-	form = {
-		{
-			type = "Category",
-			name = "General",
+MODULE.menu = {
+	config = {
+		form = {
+			{
+				type = "Category",
+				name = "General",
+			},
+			{
+				type = "TextEntry",
+				name = "SCP-096 Bag Model",
+				id = "bagmodel",
+				desc = "Define the bag model that will be shown when SCP-096 will be bagged.",
+				default = "models/props_junk/MetalBucket01a.mdl",
+			},
+			guthscp.config.create_apply_button(),
 		},
-		{
-			type = "TextEntry",
-			name = "SCP-096 Bag Model",
-			id = "bagmodel",
-			desc = "Define the bag model that will be shown when SCP-096 will be bagged.",
-			default = "models/props_junk/MetalBucket01a.mdl",
-		},
-		guthscp.config.create_apply_button(),
+		receive = function( form )
+			guthscp.config.apply( MODULE.id, form, {
+				network = true,
+				save = true,
+			} )
+		end,
 	},
-	receive = function( form )
-		guthscp.config.apply( MODULE.id, form, {
-			network = true,
-			save = true,
-		} )
-	end,
+	details = {
+		{
+			text = "CC-BY-SA",
+			icon = "icon16/page_white_key.png",
+		},
+		"Social",
+		{
+			text = "Github",
+			icon = "guthscp/icons/github.png",
+			url = "https://github.com/Certurix/ctx096bag",
+		},
+		-- {
+		-- 	text = "Steam",
+		-- 	icon = "guthscp/icons/steam.png",
+		-- 	url = "https://steamcommunity.com/sharedfiles/filedetails/?id=2139521265"
+		-- },
+		{
+			text = "Discord",
+			icon = "guthscp/icons/discord.png",
+			url = "https://discord.gg/vaMFXvzwqP",
+		},
+	},
 }
 
 --  TODO: remove if not used
@@ -39,7 +67,7 @@ function MODULE:construct()
 end
 
 function MODULE:init()
-	print("SCP-096 Bag Module has ben loaded!")
+	MODULE:info("SCP-096 Bag System has been loaded!")
 end
 
 guthscp.module.hot_reload( "ctx096bag" )

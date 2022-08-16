@@ -16,7 +16,9 @@ SWEP.ViewModel = ""
 SWEP.WorldModel = ""
 SWEP.ShowViewModel = true
 SWEP.ShowWorldModel = false
-local model = ClientsideModel(guthscp.configs.bagmodel)
+if guthscp then
+    model = ClientsideModel(guthscp.configs.bagmodel or "models/props_junk/MetalBucket01a.mdl")
+end
 model:SetNoDraw( true )
 
 hook.Add( "PostPlayerDraw" , "ctx_096_bag_draw" , function( ply )
