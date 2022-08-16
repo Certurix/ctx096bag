@@ -19,4 +19,5 @@ Install it on your server (Pre-release must not be installed on production serve
 
 ### SCP-096 Bag Model
 Default: models/props_junk/MetalBucket01a.mdl
+
 *You should use the default bag model for now*
