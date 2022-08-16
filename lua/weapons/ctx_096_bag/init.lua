@@ -19,7 +19,7 @@ function SWEP:PrimaryAttack()
 	local target = trace.Entity
 	if not guthscp.isSCP096Enraged( target ) then
 		if target:IsPlayer() and target:GetPos():DistToSqr( ply:GetPos() ) <= dist_sqr and guthscp.isSCP096( target ) then
-			if target:HasWeapon("ctx_096_bag") then
+			if guthscp.isSCP096Bagged(target) then
 				return DarkRP.notify(ply, NOTIFY_ERROR, 8, "SCP-096 a déjà un sac sur sa tête, faites E pour lui retirer le sac.")
 			end
 			target:Give("ctx_096_bag")
