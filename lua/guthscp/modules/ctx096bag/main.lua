@@ -31,6 +31,13 @@ MODULE.menu = {
 				default = "models/props_junk/MetalBucket01a.mdl",
 			},
 			{
+				type = "TextEntry",
+				name = "Key",
+				id = "key",
+				desc = "Define the key used to interact with SCP-096 Bag.",
+				default = "E",
+			},
+			{
 				type = "NumWang",
 				name = "Notification Delay",
 				id = "notificationdelay",

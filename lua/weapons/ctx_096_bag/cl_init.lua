@@ -19,9 +19,7 @@ SWEP.ViewModel = ""
 SWEP.WorldModel = ""
 SWEP.ShowViewModel = true
 SWEP.ShowWorldModel = false
-if config then
-    model = ClientsideModel(config.bagmodel or "models/props_junk/MetalBucket01a.mdl")
-end
+model = ClientsideModel("models/props_junk/MetalBucket01a.mdl")
 model:SetNoDraw( true )
 
 hook.Add( "PostPlayerDraw" , "ctx_096_bag_draw" , function( ply )
@@ -45,7 +43,7 @@ hook.Add( "PostPlayerDraw" , "ctx_096_bag_draw" , function( ply )
                 
             model:SetPos(pos)
             model:SetAngles(ang)
-        
+            model:SetModel(config.bagmodel)
             model:SetRenderOrigin(pos)
             model:SetRenderAngles(ang)
             model:SetupBones()
@@ -91,7 +89,7 @@ hook.Add("PostPlayerDraw", "ctx_096_drawhud", function(target)
             if guthscp096.is_scp_096_enraged(target) then return end
             cam.Start3D2D( pos, angle, 0.1 )
             surface.SetFont( "Default" )
-            local text = "[E] "..config.textremovebag
+            local text = "["..config.key.."] "..config.textremovebag
             local tW, tH = surface.GetTextSize(text)
     
             local pad = 5
@@ -102,7 +100,7 @@ hook.Add("PostPlayerDraw", "ctx_096_drawhud", function(target)
         elseif guthscp.isSCP096Bagged(ply) and not guthscp.isSCP096Bagged(target) and ply:GetActiveWeapon():GetClass() == "ctx_096_bag" then
             cam.Start3D2D( pos, angle, 0.1 )
             surface.SetFont( "Default" )
-            local text2 = "[E] "..config.textputbag
+            local text2 = "["..config.key.."] "..config.textputbag
             local tW, tH = surface.GetTextSize( text2 )
 
             local pad = 5
