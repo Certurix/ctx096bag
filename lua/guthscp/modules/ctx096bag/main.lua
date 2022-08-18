@@ -1,7 +1,7 @@
 local MODULE = {
 	name = "SCP 096 Bag",
 	author = "Certurix",
-	version = "1.0.0-beta",
+	version = "1.0.1-beta",
 	description = "A must-have for SCP-096, you can bag him to avoid triggering him!",
 	icon = "icon16/eye.png",
 	version_url = "https://raw.githubusercontent.com/Certurix/ctx096bag/main/lua/guthscp/modules/ctx096bag/main.lua",
@@ -116,7 +116,7 @@ MODULE.menu = {
 		-- 	url = "https://steamcommunity.com/sharedfiles/filedetails/?id=2139521265"
 		-- },
 		{
-			text = "Discord",
+			text = "Discord/Support",
 			icon = "guthscp/icons/discord.png",
 			url = "https://discord.gg/vaMFXvzwqP",
 		},
