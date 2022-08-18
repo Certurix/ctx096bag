@@ -1,4 +1,7 @@
 include("shared.lua")
+
+local guthscp096 = guthscp.modules.guthscp096
+local config = guthscp.configs.ctx096bag
 SWEP.Primary.ClipSize = -1
 SWEP.Primary.DefaultClip = -1
 SWEP.Primary.Automatic = false
@@ -16,14 +19,14 @@ SWEP.ViewModel = ""
 SWEP.WorldModel = ""
 SWEP.ShowViewModel = true
 SWEP.ShowWorldModel = false
-if guthscp then
-    model = ClientsideModel(guthscp.configs.bagmodel or "models/props_junk/MetalBucket01a.mdl")
+if config then
+    model = ClientsideModel(config.bagmodel or "models/props_junk/MetalBucket01a.mdl")
 end
 model:SetNoDraw( true )
 
 hook.Add( "PostPlayerDraw" , "ctx_096_bag_draw" , function( ply )
 	if not IsValid(ply) or not ply:Alive() then return end
-    if guthscp.isSCP096(ply) then
+    if guthscp096.is_scp_096(ply) then
         if guthscp.isSCP096Bagged(ply) then -- If bagged
             -- Bag renderer
             local attach_id = ply:LookupAttachment('eyes')
@@ -57,7 +60,7 @@ end )
 
 hook.Add( "HUDPaint", "zzz_vkxscp096:rage", function()
 	local ply = LocalPlayer()
-    if guthscp.isSCP096( ply ) then
+    if guthscp096.is_scp_096( ply ) then
         if guthscp.isSCP096Bagged(ply) then -- if Bagged
             //Black Screen on SCP 096 when bag equiped
             local tab = {
@@ -83,12 +86,12 @@ hook.Add("PostPlayerDraw", "ctx_096_drawhud", function(target)
 
 	pos = pos + Vector( 0, 0, math.cos( CurTime() / 2 ) + 20 )
     local weapon = ply:GetActiveWeapon()
-    if target:IsPlayer() and target:GetPos():DistToSqr( ply:GetPos() ) <= dist_sqr and guthscp.isSCP096( target ) then
+    if target:IsPlayer() and target:GetPos():DistToSqr( ply:GetPos() ) <= dist_sqr and guthscp096.is_scp_096( target ) then
         if guthscp.isSCP096Bagged(target) then
-            if guthscp.isSCP096Enraged(target) then return end
+            if guthscp096.is_scp_096_enraged(target) then return end
             cam.Start3D2D( pos, angle, 0.1 )
             surface.SetFont( "Default" )
-            local text = "[E] Retirer le sac"
+            local text = "[E] "..config.textremovebag
             local tW, tH = surface.GetTextSize(text)
     
             local pad = 5
@@ -99,13 +102,13 @@ hook.Add("PostPlayerDraw", "ctx_096_drawhud", function(target)
         elseif guthscp.isSCP096Bagged(ply) and not guthscp.isSCP096Bagged(target) and ply:GetActiveWeapon():GetClass() == "ctx_096_bag" then
             cam.Start3D2D( pos, angle, 0.1 )
             surface.SetFont( "Default" )
-            local text = "[Clic droit] Mettre le sac" 
-            local tW, tH = surface.GetTextSize( text )
+            local text2 = "[E] "..config.textputbag
+            local tW, tH = surface.GetTextSize( text2 )
 
             local pad = 5
             surface.SetDrawColor( 0, 0, 0)
             surface.DrawRect( -tW / 2 - pad, -pad, tW + pad * 2, tH + pad * 2 )
-            draw.SimpleText( text, "Default", -tW / 2, 0, color_white )
+            draw.SimpleText( text2, "Default", -tW / 2, 0, color_white )
             cam.End3D2D()
         end
     end

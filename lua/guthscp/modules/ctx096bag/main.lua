@@ -7,13 +7,14 @@ local MODULE = {
 	version_url = "https://raw.githubusercontent.com/Certurix/ctx096bag/main/lua/guthscp/modules/ctx096bag/main.lua",
 	dependencies = {
 		base = "2.0.0",
-		vkxscp096 = "2.0.0",
+		guthscp096 = "2.0.0",
 	},
 	requires = {
 		["server/"] = guthscp.REALMS.SERVER,
 		["shared/"] = guthscp.REALMS.SHARED,
 	},
 }
+
 --  config
 MODULE.menu = {
 	config = {
@@ -28,6 +29,59 @@ MODULE.menu = {
 				id = "bagmodel",
 				desc = "Define the bag model that will be shown when SCP-096 will be bagged.",
 				default = "models/props_junk/MetalBucket01a.mdl",
+			},
+			{
+				type = "NumWang",
+				name = "Notification Delay",
+				id = "notificationdelay",
+				desc = "How long will each notification of the module will be shown",
+				default = 8,
+			},
+			{
+				type = "Category",
+				name = "Translation",
+			},
+			{
+				type = "TextEntry",
+				name = "Put the bag",
+				id = "textputbag",
+				desc = "Configure the text that will be shown when you have the SCP-096 Bag Swep equipped and facing toward it.",
+				default = "Put the bag",
+			},
+			{
+				type = "TextEntry",
+				name = "Remove the bag",
+				id = "textremovebag",
+				desc = "Configure the text that will be shown when you approach SCP-096 to remove the bag.",
+				default = "Remove the bag",
+			},
+			{
+				type = "TextEntry",
+				name = "Already have bag",
+				id = "textalreadyhavebag",
+				desc = "Configure the notification that will be shown when you try to put the bag on SCP-096 but he already have it.",
+				default = "SCP-096 already have a bag on his head, press E to remove it.",
+			},
+			{
+				type = "TextEntry",
+				name = "Now have bag",
+				id = "textnowhavebag",
+				desc = "Configure the notification that will be shown when you put the bag on SCP-096's face",
+				default = "SCP-096 now have the bag on his face!",
+			},
+			{
+				type = "TextEntry",
+				name = "No longer have bag",
+				id = "textnolongerhavebag",
+				desc = "Configure the notification that will be shown when you remove the bag from SCP-096's face",
+				default = "You have removed the bag from SCP-096's face!",
+			},
+			{
+				type = "TextEntry",
+				name = "Is Triggered",
+				id = "textistriggered",
+				desc = "Configure the notification that will be shown when you try to put the bag on SCP 096's face but he is triggered.",
+				default = "SCP-096 has been triggered and you can't put the bag on him!",
 			},
 			guthscp.config.create_apply_button(),
 		},
