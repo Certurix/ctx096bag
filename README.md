@@ -60,3 +60,6 @@ Default: You have removed the bag from SCP-096's face!
 ### Is Triggered
 Description: Configure the notification that will be shown when you try to put the bag on SCP 096's face but he is triggered.
 Default: SCP-096 has been triggered and you can't put the bag on him!
+
+## Support
+If you need help to setup or if you have any error and/or conflicting addon, please join the [Discord support server](https://discord.gg/vaMFXvzwqP). You can create an issue, but response time is still better on Discord.
