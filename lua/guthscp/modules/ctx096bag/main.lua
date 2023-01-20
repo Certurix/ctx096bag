@@ -25,7 +25,7 @@ MODULE.menu = {
 			},
 			{
 				type = "TextEntry",
-				name = "Bag Model",
+				name = "SCP-096 Bag Model",
 				id = "bagmodel",
 				desc = "Define the bag model that will be shown when SCP-096 will be bagged.",
 				default = "models/props_junk/MetalBucket01a.mdl",
@@ -90,17 +90,6 @@ MODULE.menu = {
 				desc = "Configure the notification that will be shown when you try to put the bag on SCP 096's face but he is triggered.",
 				default = "SCP-096 has been triggered and you can't put the bag on him!",
 			},
-			{
-				type = "Category",
-				name = "Advanced",
-			},
-			{
-				type = "NumWang",
-				name = "Axis: X",
-				id = "axis_x",
-				desc = "Configure the X Axis to rotate the Bag Model",
-				default = 0
-			}
 			guthscp.config.create_apply_button(),
 		},
 		receive = function( form )
