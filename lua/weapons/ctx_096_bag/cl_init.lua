@@ -57,11 +57,11 @@ hook.Add( "PostPlayerDraw" , "ctx_096_bag_draw" , function( ply )
 end )
 	
 
-hook.Add( "HUDPaint", "zzz_vkxscp096:rage", function()
+hook.Add( "HUDPaint", "ctx_096_bag_effects", function()
 	local ply = LocalPlayer()
     if guthscp096.is_scp_096( ply ) then
         if guthscp.isSCP096Bagged(ply) then -- if Bagged
-            //Black Screen on SCP 096 when bag equiped
+            -- Black Screen on SCP 096 when bag equiped
             local tab = {
                 ["$pp_colour_brightness"] = 0,
                 ["$pp_colour_contrast"] = 0,
