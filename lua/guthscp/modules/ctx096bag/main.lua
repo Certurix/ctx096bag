@@ -25,13 +25,6 @@ MODULE.menu = {
 			},
 			{
 				type = "TextEntry",
-				name = "SCP-096 Bag Model",
-				id = "bagmodel",
-				desc = "Define the bag model that will be shown when SCP-096 will be bagged.",
-				default = "models/props_junk/MetalBucket01a.mdl",
-			},
-			{
-				type = "TextEntry",
 				name = "Key",
 				id = "key",
 				desc = "Define the key used to interact with SCP-096 Bag.",
@@ -43,6 +36,38 @@ MODULE.menu = {
 				id = "notificationdelay",
 				desc = "How long will each notification of the module will be shown",
 				default = 8,
+			},
+			{
+				type = "Category",
+				name = "Bag Model"
+			},
+			{
+				type = "TextEntry",
+				name = "Model",
+				id = "bagmodel",
+				desc = "Define the bag model that will be shown when SCP-096 will be bagged.",
+				default = "models/props_junk/MetalBucket01a.mdl",
+			},
+			{
+				type = "Vector",
+				name = "Position Offset",
+				id = "bag_position_offset",
+				desc = "Set the position offset for drawing the bag model",
+				default = Vector( 4.0, 3.0, 5.0 ),
+			},
+			{
+				type = "Angle",
+				name = "Rotation Offset",
+				id = "bag_rotation_offset",
+				desc = "Set the angle offset for drawing the bag model",
+				default = Angle( -15.0, 0.0, -90.0 ),
+			},
+			{
+				type = "NumWang",
+				name = "Model Scale",
+				id = "bag_model_scale",
+				desc = "Scales the bag model",
+				default = 0.9,
 			},
 			{
 				type = "Category",

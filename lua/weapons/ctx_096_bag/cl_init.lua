@@ -35,12 +35,14 @@ hook.Add( "PostPlayerDraw" , "ctx_096_bag_draw" , function( ply )
                     
             if not attach then return end
                     
-            local pos = attach.Pos
-            local ang = attach.Ang
-                
-            model:SetModelScale(0.8, 0)
-            pos = pos + (ang:Forward() * -5) + (ang:Up() * -4) + (ang:Right() * 4)
-            ang:RotateAroundAxis(ang:Forward(), -90)
+            local ang = attach.Ang + config.bag_rotation_offset
+            local pos = attach.Pos - ang:Forward() * config.bag_position_offset.x 
+                                   - ang:Right() * config.bag_position_offset.y 
+                                   - ang:Up() * config.bag_position_offset.z
+
+            model:SetModelScale(config.bag_model_scale, 0)
+           -- pos = pos + (ang:Forward() * -5) + (ang:Up() * -4) + (ang:Right() * 4)
+            --ang:RotateAroundAxis(ang:Forward(), -90)
                 
             model:SetPos(pos)
             model:SetAngles(ang)

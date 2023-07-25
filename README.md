@@ -21,12 +21,6 @@ Install it on your server (Pre-release must not be installed on production serve
 
 ### General
 
-### SCP-096 Bag Model
-Description: Define the bag model that will be shown when SCP-096 will be bagged.
-Default: models/props_junk/MetalBucket01a.mdl
-
-*You should use the default bag model for now*
-
 ### Key
 Description: Define the key used to interact with SCP-096 Bag.
 Default: E
@@ -34,6 +28,25 @@ Default: E
 ### Notification Delay
 Description: How long will each notification of the module will be shown
 Default: 8
+
+### Bag Model
+### Model
+Description: Define the bag model that will be shown when SCP-096 will be bagged.
+Default: models/props_junk/MetalBucket01a.mdl
+
+*You should use the default bag model for now*
+
+### Position Offset
+Description: Set the position offset for drawing the bag model
+Default: 4.0, 3.0, 5.0
+
+### Rotation Offset
+Description: Set the angle offset for drawing the bag model
+Default: -15.0, 0.0, -90.0
+
+### Model Scale
+Description: Scales the bag model
+Default: 0.9
 
 ### Translation
 
