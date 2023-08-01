@@ -19,10 +19,7 @@ local MODULE = {
 MODULE.menu = {
 	config = {
 		form = {
-			{
-				type = "Category",
-				name = "General",
-			},
+			"General",
 			{
 				type = "TextEntry",
 				name = "Key",
@@ -37,10 +34,7 @@ MODULE.menu = {
 				desc = "How long will each notification of the module will be shown",
 				default = 8,
 			},
-			{
-				type = "Category",
-				name = "Bag Model"
-			},
+			"Bag Model",
 			{
 				type = "TextEntry",
 				name = "Model",
@@ -69,10 +63,7 @@ MODULE.menu = {
 				desc = "Scales the bag model",
 				default = 0.9,
 			},
-			{
-				type = "Category",
-				name = "Translation",
-			},
+			"Translation",
 			{
 				type = "TextEntry",
 				name = "Put the bag",
