@@ -4,6 +4,8 @@ if not guthscp then return print("[CTX096BAG]", "FATAL ERROR! GUTHSCPBASE IS NOT
 local guthscp096 = guthscp.modules.guthscp096
 local ctx096bag = guthscp.modules.ctx096bag
 local config = guthscp.configs.ctx096bag
+
+local dist_sqr = 125 ^ 1.8
 SWEP.Primary.ClipSize = -1
 SWEP.Primary.DefaultClip = -1
 SWEP.Primary.Automatic = false
@@ -73,7 +75,6 @@ hook.Add( "HUDPaint", "ctx_096_bag_effects", function()
         end
     end
 end)
-local dist_sqr = 125 ^ 1.8
 hook.Add("PostPlayerDraw", "ctx_096_drawhud", function(target)
     -- hud renderer when the holder of the bag have equiped it and looking SCP 096
 	local angle = EyeAngles()
