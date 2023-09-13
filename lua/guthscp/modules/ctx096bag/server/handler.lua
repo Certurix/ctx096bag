@@ -21,7 +21,9 @@ local function UseBag(ply, button)
 		local trace = ply:GetEyeTrace()
 		local target = trace.Entity
 
-		local tool = ply:GetActiveWeapon():GetClass()
+		local tool = ply:GetActiveWeapon()
+		local tool = IsValid( tool ) and tool:GetClass()
+
 		if not guthscp096.is_scp_096_enraged( target ) then
 			if target:IsPlayer() and target:GetPos():DistToSqr( ply:GetPos() ) <= dist_sqr and guthscp096.is_scp_096( target ) then
 				if ctx096bag.is_scp_096_bagged(target) then
