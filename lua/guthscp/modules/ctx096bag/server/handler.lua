@@ -1,12 +1,14 @@
 local guthscp096 = guthscp.modules.guthscp096
+local ctx096bag = guthscp.modules.ctx096bag
+local config = guthscp.configs.ctx096bag
+
 hook.Add( "guthscp096:should_trigger", "guthscp096:ignore_bag", function( target, ply )
-	if guthscp.isSCP096Bagged(ply) then
+	if ctx096bag.is_scp_096_bagged(ply) then
 		return false
 	end
 end )
 local dist_sqr = 125 ^ 2
 local function UseBag(ply, button)
-	local config = guthscp.configs.ctx096bag
 	if ( not IsFirstTimePredicted() ) then return end
 	if button == _G["KEY_" .. config.key] then
 		local cur_time = CurTime()
@@ -19,7 +21,7 @@ local function UseBag(ply, button)
 		local tool = ply:GetActiveWeapon():GetClass()
 		if not guthscp096.is_scp_096_enraged( target ) then
 			if target:IsPlayer() and target:GetPos():DistToSqr( ply:GetPos() ) <= dist_sqr and guthscp096.is_scp_096( target ) then
-				if guthscp.isSCP096Bagged(target) then
+				if ctx096bag.is_scp_096_bagged(target) then
 					if tool == "ctx_096_bag" then -- If the player have SCP 096 Bag equipped
 						return DarkRP.notify(ply, NOTIFY_ERROR, 8, config.textalreadyhavebag)
 					else
