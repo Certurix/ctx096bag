@@ -2,6 +2,7 @@ include("shared.lua")
 if not guthscp then return print("[CTX096BAG]", "FATAL ERROR! GUTHSCPBASE IS NOT INSTALLED ON THE SERVER. PLEASE INSTALL THE MODULE BASED BRANCH AND RESTART YOUR SERVER. THE MODULE CAN'T BE LOADED WITHOUT IT!", "\nINSTALL IT HERE: \nhttps://github.com/Guthen/guthscpbase/tree/remaster-as-modules-based") end
 
 local guthscp096 = guthscp.modules.guthscp096
+local ctx096bag = guthscp.modules.ctx096bag
 local config = guthscp.configs.ctx096bag
 SWEP.Primary.ClipSize = -1
 SWEP.Primary.DefaultClip = -1
