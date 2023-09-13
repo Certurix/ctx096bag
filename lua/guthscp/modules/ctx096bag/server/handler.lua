@@ -7,17 +7,20 @@ hook.Add( "guthscp096:should_trigger", "guthscp096:ignore_bag", function( target
 		return false
 	end
 end )
+
 local dist_sqr = 125 ^ 2
+
 local function UseBag(ply, button)
 	if ( not IsFirstTimePredicted() ) then return end
+
 	if button == _G["KEY_" .. config.key] then
 		local cur_time = CurTime()
-		if ( ply.LastUse or cur_time ) > cur_time then
-			return
-		end
+		if ( ply.LastUse or cur_time ) > cur_time then return end
+		ply.LastUse = cur_time + 2
+
 		local trace = ply:GetEyeTrace()
 		local target = trace.Entity
-		ply.LastUse = cur_time + 2
+
 		local tool = ply:GetActiveWeapon():GetClass()
 		if not guthscp096.is_scp_096_enraged( target ) then
 			if target:IsPlayer() and target:GetPos():DistToSqr( ply:GetPos() ) <= dist_sqr and guthscp096.is_scp_096( target ) then
