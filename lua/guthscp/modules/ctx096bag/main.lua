@@ -1,7 +1,7 @@
 local MODULE = {
 	name = "SCP 096 Bag",
 	author = "Certurix",
-	version = "1.0.3-beta",
+	version = "1.0.4-beta",
 	description = "A must-have for SCP-096, you can bag him to avoid triggering him!",
 	icon = "icon16/eye.png",
 	version_url = "https://raw.githubusercontent.com/Certurix/ctx096bag/main/lua/guthscp/modules/ctx096bag/main.lua",
@@ -33,6 +33,28 @@ MODULE.menu = {
 				id = "notificationdelay",
 				desc = "How long will each notification of the module will be shown",
 				default = 8,
+			},
+			"Progress Bar Settings",
+			{
+				type = "Bool",
+				name = "Progress Bar",
+				id = "progressbar",
+				desc = "Define if the progress bar should be shown when SCP-096 is bagged.",
+				default = false,
+			},
+			{
+				type = "Number",
+				name = "Progress Bar Speed",
+				id = "progressbar_speed",
+				desc = "Set the decreasing speed of the progress bar.",
+				default = 0.2,
+			},
+			{
+				type = "Number",
+				name = "Progress Bar Threshold",
+				id = "progressbar_threshold",
+				desc = "Set the threshold of the progress bar.",
+				default = 0.05,
 			},
 			"Bag Model",
 			{

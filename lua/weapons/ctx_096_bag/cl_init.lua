@@ -6,6 +6,11 @@ local ctx096bag = guthscp.modules.ctx096bag
 local config = guthscp.configs.ctx096bag
 
 local dist_sqr = 125 ^ 1.8
+progress = 0
+
+model = ClientsideModel("models/props_junk/MetalBucket01a.mdl")
+model:SetNoDraw( true )
+
 SWEP.Primary.ClipSize = -1
 SWEP.Primary.DefaultClip = -1
 SWEP.Primary.Automatic = false
@@ -20,11 +25,9 @@ SWEP.ViewModelFOV = 70
 SWEP.ViewModelFlip = false
 SWEP.UseHands = true
 SWEP.ViewModel = ""
-SWEP.WorldModel = ""
+SWEP.WorldModel = model
 SWEP.ShowViewModel = true
-SWEP.ShowWorldModel = false
-model = ClientsideModel("models/props_junk/MetalBucket01a.mdl")
-model:SetNoDraw( true )
+SWEP.ShowWorldModel = true
 
 hook.Add( "PostPlayerDraw" , "ctx_096_bag_draw" , function( ply )
 	if not IsValid(ply) or not ply:Alive() then return end
@@ -33,11 +36,11 @@ hook.Add( "PostPlayerDraw" , "ctx_096_bag_draw" , function( ply )
             -- Bag renderer
             local attach_id = ply:LookupAttachment('eyes')
             if not attach_id then return end
-                    
+
             local attach = ply:GetAttachment(attach_id)
-                    
+
             if not attach then return end
-                    
+
             local ang = attach.Ang + config.bag_rotation_offset
             local pos = attach.Pos - ang:Forward() * config.bag_position_offset.x 
                                    - ang:Right() * config.bag_position_offset.y 
@@ -46,7 +49,7 @@ hook.Add( "PostPlayerDraw" , "ctx_096_bag_draw" , function( ply )
             model:SetModelScale(config.bag_model_scale, 0)
            -- pos = pos + (ang:Forward() * -5) + (ang:Up() * -4) + (ang:Right() * 4)
             --ang:RotateAroundAxis(ang:Forward(), -90)
-                
+
             model:SetPos(pos)
             model:SetAngles(ang)
             model:SetModel(config.bagmodel)
@@ -60,7 +63,39 @@ hook.Add( "PostPlayerDraw" , "ctx_096_bag_draw" , function( ply )
         end
     end
 end )
-	
+
+local function ctx096bag_progressbar()
+    hook.Add("HUDPaint", "ctx_096_bag_progress", function()
+        local ply = LocalPlayer()
+        if guthscp096.is_scp_096(ply) then
+            if ctx096bag.is_scp_096_bagged(ply) then
+
+                local screenWidth, screenHeight = ScrW(), ScrH()
+                local barWidth, barHeight = 200, 20
+                local barX, barY = screenWidth / 2 - barWidth / 2, screenHeight - 100
+
+                surface.SetDrawColor(255, 255, 255)
+                surface.DrawRect(barX, barY, barWidth, barHeight)
+
+                local progressWidth = barWidth * progress
+                surface.SetDrawColor(0, 60, 255)
+                surface.DrawRect(barX, barY, progressWidth, barHeight)
+
+                if progress >= 0 and progress < 1 then
+                    progress = progress - FrameTime() * config.progressbar_speed
+                end
+                if progress >= 1 and progress > 0 then
+                    progress = 0
+                    hook.Remove("HUDPaint", "ctx_096_bag_progress")
+                    net.Start("ctx_096_bag::destroyed_bag")
+                    net.SendToServer()
+                end
+            else
+                progress = 0
+            end
+        end
+    end)
+end
 
 hook.Add( "HUDPaint", "ctx_096_bag_effects", function()
 	local ply = LocalPlayer()
@@ -72,9 +107,21 @@ hook.Add( "HUDPaint", "ctx_096_bag_effects", function()
                 ["$pp_colour_contrast"] = 0,
             }
             DrawColorModify( tab )
+            ctx096bag_progressbar()
         end
     end
 end)
+
+hook.Add("KeyPress", "ctx_096_bag_keypress", function(ply, key)
+    if guthscp096.is_scp_096(ply) and key == IN_USE then
+        if input.IsKeyDown(KEY_E) then
+            progress = progress + config.progressbar_threshold
+        else
+            progress = 0
+        end
+    end
+end)
+
 hook.Add("PostPlayerDraw", "ctx_096_drawhud", function(target)
     -- hud renderer when the holder of the bag have equiped it and looking SCP 096
 	local angle = EyeAngles()
