@@ -67,31 +67,33 @@ end )
 local function ctx096bag_progressbar()
     hook.Add("HUDPaint", "ctx_096_bag_progress", function()
         local ply = LocalPlayer()
-        if guthscp096.is_scp_096(ply) then
-            if ctx096bag.is_scp_096_bagged(ply) then
+        if config.progressbar then
+            if guthscp096.is_scp_096(ply) then
+                if ctx096bag.is_scp_096_bagged(ply) then
 
-                local screenWidth, screenHeight = ScrW(), ScrH()
-                local barWidth, barHeight = 200, 20
-                local barX, barY = screenWidth / 2 - barWidth / 2, screenHeight - 100
+                    local screenWidth, screenHeight = ScrW(), ScrH()
+                    local barWidth, barHeight = 200, 20
+                    local barX, barY = screenWidth / 2 - barWidth / 2, screenHeight - 100
 
-                surface.SetDrawColor(255, 255, 255)
-                surface.DrawRect(barX, barY, barWidth, barHeight)
+                    surface.SetDrawColor(255, 255, 255)
+                    surface.DrawRect(barX, barY, barWidth, barHeight)
 
-                local progressWidth = barWidth * progress
-                surface.SetDrawColor(0, 60, 255)
-                surface.DrawRect(barX, barY, progressWidth, barHeight)
+                    local progressWidth = barWidth * progress
+                    surface.SetDrawColor(0, 60, 255)
+                    surface.DrawRect(barX, barY, progressWidth, barHeight)
 
-                if progress >= 0 and progress < 1 then
-                    progress = progress - FrameTime() * config.progressbar_speed
-                end
-                if progress >= 1 and progress > 0 then
+                    if progress >= 0 and progress < 1 then
+                        progress = progress - FrameTime() * config.progressbar_speed
+                    end
+                    if progress >= 1 and progress > 0 then
+                        progress = 0
+                        hook.Remove("HUDPaint", "ctx_096_bag_progress")
+                        net.Start("ctx_096_bag::destroyed_bag")
+                        net.SendToServer()
+                    end
+                else
                     progress = 0
-                    hook.Remove("HUDPaint", "ctx_096_bag_progress")
-                    net.Start("ctx_096_bag::destroyed_bag")
-                    net.SendToServer()
                 end
-            else
-                progress = 0
             end
         end
     end)
