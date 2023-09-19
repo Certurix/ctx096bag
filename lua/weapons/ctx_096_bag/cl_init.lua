@@ -47,6 +47,8 @@ hook.Add( "PostPlayerDraw" , "ctx_096_bag_draw" , function( ply )
                                    - ang:Up() * config.bag_position_offset.z
 
             model:SetModelScale(config.bag_model_scale, 0)
+           -- pos = pos + (ang:Forward() * -5) + (ang:Up() * -4) + (ang:Right() * 4)
+            --ang:RotateAroundAxis(ang:Forward(), -90)
 
             model:SetPos(pos)
             model:SetAngles(ang)
