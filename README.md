@@ -7,13 +7,18 @@ A SCP-096 Bag System for guthscp096 addon module
 You will need the guthscpbase module version to use it.
 
 ### Installation Process
+
+### Steam Workshop
+It's the easiest way. You can [download ctx096bag now](https://steamcommunity.com/sharedfiles/filedetails/?id=3035662778) from the Steam Workshop!
+
+### Manual installation
 Download the [guthscpbase module](https://github.com/Guthen/guthscpbase/tree/remaster-as-modules-based) and install it inside addons/ folder of your server.
 
 Download the [guthscp096 module](https://github.com/Guthen/guthscp096/tree/update-to-guthscpbase-remaster) and install it inside addons/ folder of your server.
 
-Download this module by going on the [release page](https://github.com/Certurix/ctx096bag/releases)
+Download this module by going on the [release page](https://github.com/Certurix/ctx096bag/releases) and install it inside addons/ folder of your server.
 
-Install it on your server
+Restart your server and your ready to go!
 
 ## Configuration
 
