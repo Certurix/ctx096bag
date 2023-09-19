@@ -6,8 +6,6 @@ A SCP-096 Bag System for guthscp096 addon module
 ### Warning/Instructions
 You will need the guthscpbase module version to use it.
 
-ONLY WORKS ON DARKRP GAMEMODE FOR NOW.
-
 ### Installation Process
 Download the [guthscpbase module](https://github.com/Guthen/guthscpbase/tree/remaster-as-modules-based) and install it inside addons/ folder of your server.
 
