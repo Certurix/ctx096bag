@@ -5,3 +5,11 @@ function ctx096bag.is_scp_096_bagged( ply )
 		return true
 	end
 end
+
+function ctx096bag.notification(ply, notify, lengh, text)
+	if DarkRP then
+		DarkRP.notify(ply, notify, lengh, text)
+	else
+		ply:ChatPrint(text)
+	end
+end

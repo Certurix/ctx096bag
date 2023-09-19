@@ -34,20 +34,20 @@ local function UseBag(ply, button)
 			if target:IsPlayer() and target:GetPos():DistToSqr( ply:GetPos() ) <= dist_sqr and guthscp096.is_scp_096( target ) then
 				if ctx096bag.is_scp_096_bagged(target) then
 					if tool == "ctx_096_bag" then -- If the player have SCP 096 Bag equipped
-						return DarkRP.notify(ply, NOTIFY_ERROR, 8, config.textalreadyhavebag)
+						return ctx096bag.notification(ply, NOTIFY_ERROR, 8, config.textalreadyhavebag)
 					else
-						DarkRP.notify(ply, NOTIFY_GENERIC, 8, config.textnolongerhavebag) target:StripWeapon("ctx_096_bag") ply:Give("ctx_096_bag")
+						ctx096bag.notification(ply, NOTIFY_GENERIC, 8, config.textnolongerhavebag) target:StripWeapon("ctx_096_bag") ply:Give("ctx_096_bag")
 					end
 				else
 					if tool == "ctx_096_bag" then
 						target:Give("ctx_096_bag")
-						DarkRP.notify(ply, NOTIFY_GENERIC, 8, config.textnowhavebag)
+						ctx096bag.notification(ply, NOTIFY_GENERIC, 8, config.textnolongerhavebag)
 						ply:StripWeapon("ctx_096_bag")
 					end
 				end
 			end
 		else
-			DarkRP.notify(ply, NOTIFY_ERROR, 8, config.textistriggered)
+			ctx096bag.notification(ply, NOTIFY_ERROR, 8, config.textistriggered)
 		end
 	end
 end
