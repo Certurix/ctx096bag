@@ -149,11 +149,11 @@ MODULE.menu = {
 			icon = "guthscp/icons/github.png",
 			url = "https://github.com/Certurix/ctx096bag",
 		},
-		-- {
-		-- 	text = "Steam",
-		-- 	icon = "guthscp/icons/steam.png",
-		-- 	url = "https://steamcommunity.com/sharedfiles/filedetails/?id=2139521265"
-		-- },
+		{
+			text = "Steam",
+			icon = "guthscp/icons/steam.png",
+			url = "https://steamcommunity.com/sharedfiles/filedetails/?id=3035662778"
+		},
 		{
 			text = "Discord/Support",
 			icon = "guthscp/icons/discord.png",
