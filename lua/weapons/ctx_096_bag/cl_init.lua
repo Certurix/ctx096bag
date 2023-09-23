@@ -77,7 +77,7 @@ local function ctx096bag_progressbar()
                     surface.DrawRect(barX, barY, barWidth, barHeight)
 
                     local progressWidth = barWidth * progress
-                    surface.SetDrawColor(0, 60, 255)
+                    surface.SetDrawColor(config.progressbar_color)
                     surface.DrawRect(barX, barY, progressWidth, barHeight)
 
                     if progress >= 0 and progress < 1 then

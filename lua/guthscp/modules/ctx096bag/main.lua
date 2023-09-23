@@ -56,6 +56,13 @@ MODULE.menu = {
 				desc = "Set the threshold of the progress bar.",
 				default = 0.05,
 			},
+			{
+				type = "Color",
+				name = "Progress Bar Color",
+				id = "progressbar_color",
+				desc = "Set the color of the progress bar.",
+				default = Color( 255, 255, 255 ),
+			},
 			"Bag Model",
 			{
 				type = "String",
