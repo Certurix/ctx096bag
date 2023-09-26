@@ -16,10 +16,44 @@ end )
 
 local dist_sqr = 125 ^ 2
 
-local function UseBag(ply, button)
+local function UseDrag(ply, key)
+	if ( not IsFirstTimePredicted() ) then return end
+	if not config.draggable then return end
+	if key == config.secondkey then
+		local cur_time = CurTime()
+		if ( ply.LastUse or cur_time ) > cur_time then return end
+		ply.LastUse = cur_time + 0.5
+
+		local trace = ply:GetEyeTrace()
+		local target = trace.Entity
+
+		if not IsValid(target) then return end
+
+		if target:IsPlayer() and target:GetPos():DistToSqr( ply:GetPos() ) <= dist_sqr and guthscp096.is_scp_096( target ) and not guthscp096.is_scp_096_enraged( target ) and ctx096bag.is_scp_096_bagged(target) then
+			if not ctx096bag.is_scp_096_dragged( target ) then
+				print("dragged")
+				target:SetNW2Bool("ctx_096_bag", true)
+				hook.Add("Think", "ctx_096_bag_drag", function()
+					if target:GetPos():DistToSqr( ply:GetPos() ) >= dist_sqr then
+						 target:SetNW2Bool("ctx_096_bag", false)
+						 hook.Remove("Think", "ctx_096_bag_drag") 
+						 return end
+					local direction = (target:GetPos() - ply:GetPos()):GetNormalized()
+					target:SetVelocity(-direction*20)
+				end)
+			else
+				print('no longer dragged')
+				target:SetNW2Bool("ctx_096_bag", false)
+				hook.Remove("Think", "ctx_096_bag_drag")
+			end
+		end
+	end
+end
+
+local function Use(ply, key)
 	if ( not IsFirstTimePredicted() ) then return end
 
-	if button == _G["KEY_" .. config.key] then
+	if key == config.key then
 		local cur_time = CurTime()
 		if ( ply.LastUse or cur_time ) > cur_time then return end
 		ply.LastUse = cur_time + 2
@@ -49,7 +83,9 @@ local function UseBag(ply, button)
 		else
 			ctx096bag.notification(ply, NOTIFY_ERROR, 8, config.textistriggered)
 		end
+	elseif key == config.secondkey then
+		UseDrag(ply, key)
 	end
 end
 
-hook.Add("PlayerButtonDown", "CTX_SCP096_UseBag", UseBag)
+hook.Add("PlayerButtonDown", "CTX_SCP096_UseBag", Use)

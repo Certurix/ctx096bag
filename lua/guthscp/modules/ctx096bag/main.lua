@@ -21,11 +21,18 @@ MODULE.menu = {
 		form = {
 			"General",
 			{
-				type = "String",
+				type = "InputKey",
 				name = "Key",
 				id = "key",
 				desc = "Define the key used to interact with SCP-096 Bag.",
-				default = "E",
+				default = KEY_E,
+			},
+			{
+				type = "InputKey",
+				name = "Secondary Key",
+				id = "secondkey",
+				desc = "Define the secondary key used to drag SCP-096",
+				default = KEY_G,
 			},
 			{
 				type = "Number",
@@ -33,6 +40,13 @@ MODULE.menu = {
 				id = "notificationdelay",
 				desc = "How long will each notification of the module will be shown",
 				default = 8,
+			},
+			{
+				type = "Bool",
+				name = "Draggable",
+				id = "draggable",
+				desc = "Define if SCP-096 can be dragged.",
+				default = false,
 			},
 			"Progress Bar Settings",
 			{

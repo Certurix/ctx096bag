@@ -133,6 +133,7 @@ hook.Add("PostPlayerDraw", "ctx_096_drawhud", function(target)
 	local trace = LocalPlayer():GetEyeTrace()
 	local pos = trace.HitPos
     local target = trace.Entity
+    local key = string.upper(input.GetKeyName(config.key))
 
 	pos = pos + Vector( 0, 0, math.cos( CurTime() / 2 ) + 20 )
     local weapon = ply:GetActiveWeapon()
@@ -141,7 +142,7 @@ hook.Add("PostPlayerDraw", "ctx_096_drawhud", function(target)
             if guthscp096.is_scp_096_enraged(target) then return end
             cam.Start3D2D( pos, angle, 0.1 )
             surface.SetFont( "Default" )
-            local text = "["..config.key.."] "..config.textremovebag
+            local text = "["..key.."] "..config.textremovebag
             local tW, tH = surface.GetTextSize(text)
     
             local pad = 5
@@ -152,7 +153,7 @@ hook.Add("PostPlayerDraw", "ctx_096_drawhud", function(target)
         elseif ctx096bag.is_scp_096_bagged(ply) and not ctx096bag.is_scp_096_bagged(target) and ply:GetActiveWeapon():GetClass() == "ctx_096_bag" then
             cam.Start3D2D( pos, angle, 0.1 )
             surface.SetFont( "Default" )
-            local text2 = "["..config.key.."] "..config.textputbag
+            local text2 = "["..key.."] "..config.textputbag
             local tW, tH = surface.GetTextSize( text2 )
 
             local pad = 5
