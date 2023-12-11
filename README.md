@@ -28,9 +28,35 @@ Restart your server and your ready to go!
 Description: Define the key used to interact with SCP-096 Bag.
 Default: E
 
+### Secondary Key
+Description: Define the secondary key used to drag SCP-096
+Default: G
+
 ### Notification Delay
 Description: How long will each notification of the module will be shown
 Default: 8
+
+### Draggable
+Description: Define if SCP-096 can be dragged.
+Default: false
+
+### Progress Bar Settings
+
+### Progress Bar
+Description: Define if the progress bar should be shown when SCP-096 is bagged.
+Default: false
+
+### Progress Bar Speed
+Description: Set the decreasing speed of the progress bar.
+Default: 0.2
+
+### Progress Bar Threshold
+Description: Set the threshold of the progress bar.
+Default: 0.05
+
+### Progress Bar Color
+Description: Set the color of the progress bar.
+Default: 255, 255, 255
 
 ### Bag Model
 ### Model
