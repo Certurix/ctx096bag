@@ -4,7 +4,7 @@ local config = guthscp.configs.ctx096bag
 
 util.AddNetworkString( "ctx_096_bag::destroyed_bag" )
 
-net.Receive( "ctx_096_bag::destroyed_bag", function( len, ply ) 
+net.Receive( "ctx_096_bag::destroyed_bag", function( len, ply )
 	ply:StripWeapon( "ctx_096_bag" )
 end )
 
@@ -31,18 +31,16 @@ local function UseDrag(ply, key)
 
 		if target:IsPlayer() and target:GetPos():DistToSqr( ply:GetPos() ) <= dist_sqr and guthscp096.is_scp_096( target ) and not guthscp096.is_scp_096_enraged( target ) and ctx096bag.is_scp_096_bagged(target) then
 			if not ctx096bag.is_scp_096_dragged( target ) then
-				print("dragged")
 				target:SetNW2Bool("ctx_096_bag", true)
 				hook.Add("Think", "ctx_096_bag_drag", function()
 					if target:GetPos():DistToSqr( ply:GetPos() ) >= dist_sqr then
 						 target:SetNW2Bool("ctx_096_bag", false)
-						 hook.Remove("Think", "ctx_096_bag_drag") 
+						 hook.Remove("Think", "ctx_096_bag_drag")
 						 return end
 					local direction = (target:GetPos() - ply:GetPos()):GetNormalized()
-					target:SetVelocity(-direction*20)
+					target:SetVelocity(-direction * 20)
 				end)
 			else
-				print('no longer dragged')
 				target:SetNW2Bool("ctx_096_bag", false)
 				hook.Remove("Think", "ctx_096_bag_drag")
 			end
@@ -61,8 +59,8 @@ local function Use(ply, key)
 		local trace = ply:GetEyeTrace()
 		local target = trace.Entity
 
-		local tool = ply:GetActiveWeapon()
-		local tool = IsValid( tool ) and tool:GetClass()
+		local activeWeapon = ply:GetActiveWeapon()
+		local tool = IsValid( activeWeapon ) and activeWeapon:GetClass()
 
 		if not guthscp096.is_scp_096_enraged( target ) then
 			if target:IsPlayer() and target:GetPos():DistToSqr( ply:GetPos() ) <= dist_sqr and guthscp096.is_scp_096( target ) then
