@@ -11,4 +11,3 @@ SWEP.Secondary.DefaultClip = -1
 SWEP.Secondary.Automatic = false
 SWEP.Secondary.Ammo = "none"
 SWEP.HoldType = "duel"
-local dist_sqr = 125 ^ 1.8
