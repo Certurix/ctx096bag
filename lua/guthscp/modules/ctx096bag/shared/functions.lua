@@ -7,9 +7,9 @@ function ctx096bag.is_scp_096_dragged(ply)
 	return ply:GetNW2Bool("ctx_096_bag", false)
 end
 
-function ctx096bag.notification(ply, notify, lengh, text)
+function ctx096bag.notification(ply, notify, length, text)
 	if DarkRP then
-		DarkRP.notify(ply, notify, lengh, text)
+		DarkRP.notify(ply, notify, length, text)
 	else
 		ply:ChatPrint(text)
 	end
