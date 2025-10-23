@@ -22,60 +22,73 @@ Restart your server and your ready to go!
 
 ## Configuration
 
+### Keybinds
+
+#### Key
+Description: Define the key used to interact with SCP-096 Bag.  
+Default: `KEY_E`
+
+#### Secondary Key
+Description: Define the secondary key used to drag SCP-096  
+Default: `KEY_G`
+
 ### General
 
-### Key
-Description: Define the key used to interact with SCP-096 Bag.
-Default: E
+#### Progress Bar
+Description: Define if the progress bar should be shown when SCP-096 is bagged.  
+Default: `false`
 
-### Secondary Key
-Description: Define the secondary key used to drag SCP-096
-Default: G
+#### Draggable
+Description: Define if SCP-096 can be dragged.  
+Default: `false`
 
-### Notification Delay
-Description: How long will each notification of the module will be shown
-Default: 8
+#### Bag Effects
+Description: Define if the blur and post process effects should be shown when SCP-096 is bagged.  
+Default: `true`
 
-### Draggable
-Description: Define if SCP-096 can be dragged.
-Default: false
-
-### Progress Bar Settings
-
-### Progress Bar
-Description: Define if the progress bar should be shown when SCP-096 is bagged.
-Default: false
-
-### Progress Bar Speed
-Description: Set the decreasing speed of the progress bar.
-Default: 0.2
-
-### Progress Bar Threshold
-Description: Set the threshold of the progress bar.
-Default: 0.05
-
-### Progress Bar Color
-Description: Set the color of the progress bar.
-Default: 255, 255, 255
+#### Notification Delay
+Description: How long will each notification of the module will be shown  
+Default: `8`
 
 ### Bag Model
-### Model
-Description: Define the bag model that will be shown when SCP-096 will be bagged.
-Default: models/props_junk/MetalBucket01a.mdl
 
-*You should use the default bag model for now*
+#### Model
+Description: Define the bag model that will be shown when SCP-096 will be bagged.  
+Default: `models/props_junk/MetalBucket01a.mdl`
 
-### Position Offset
-Description: Set the position offset for drawing the bag model
-Default: 4.0, 3.0, 5.0
+#### Position Offset
+Description: Set the position offset for drawing the bag model  
+Default: `Vector(4.0, 3.0, 5.0)`
 
-### Rotation Offset
-Description: Set the angle offset for drawing the bag model
-Default: -15.0, 0.0, -90.0
+#### Rotation Offset
+Description: Set the angle offset for drawing the bag model  
+Default: `Angle(-15.0, 0.0, -90.0)`
 
-### Model Scale
-Description: Scales the bag model
-Default: 0.9
+#### Model Scale
+Description: Scales the bag model  
+Default: `0.9`
+
+### Bag Effects
+
+#### Blur
+Description: Define if the blur effect should be shown when SCP-096 is bagged.  
+Default: `true`
+
+#### Blur Amount
+Description: Set the amount of blur effect when SCP-096 is bagged.  
+Default: `6`
+
+#### Post process
+Description: Define if the post process effect should be shown when SCP-096 is bagged.  
+Default: `false`
+
+#### PP Brightness
+Description: Set the brightness of the post process effect when SCP-096 is bagged. Recommended values: between -1 and 1.  
+Default: `0`
+
+#### PP Contrast
+Description: Set the contrast of the post process effect when SCP-096 is bagged. Recommended values: between -1 and 1.  
+Default: `0`
 
 ### Translation
 
