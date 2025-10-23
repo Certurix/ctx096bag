@@ -1,7 +1,7 @@
 local MODULE = {
 	name = "SCP 096 Bag",
 	author = "Certurix",
-	version = "1.1.0-beta",
+	version = "1.2.0",
 	description = "A must-have for SCP-096, you can bag him to avoid triggering him!",
 	icon = "icon16/eye.png",
 	version_url = "https://raw.githubusercontent.com/Certurix/ctx096bag/main/lua/guthscp/modules/ctx096bag/main.lua",
