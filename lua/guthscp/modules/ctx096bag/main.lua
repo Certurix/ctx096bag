@@ -40,6 +40,7 @@ MODULE.menu = {
 				name = "Progress Bar",
 				id = "progressbar",
 				desc = "Define if the progress bar should be shown when SCP-096 is bagged.",
+				is_disabled = true,
 				default = false,
 			},
 			{

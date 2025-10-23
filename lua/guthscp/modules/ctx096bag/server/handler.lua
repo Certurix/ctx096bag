@@ -2,12 +2,6 @@ local guthscp096 = guthscp.modules.guthscp096
 local ctx096bag = guthscp.modules.ctx096bag
 local config = guthscp.configs.ctx096bag
 
-util.AddNetworkString( "ctx_096_bag::destroyed_bag" )
-
-net.Receive( "ctx_096_bag::destroyed_bag", function( len, ply )
-	ply:StripWeapon( "ctx_096_bag" )
-end )
-
 hook.Add( "guthscp096:should_trigger", "guthscp096:ignore_bag", function( target, ply )
 	if ctx096bag.is_scp_096_bagged(ply) then
 		return false
