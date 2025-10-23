@@ -23,6 +23,30 @@ SWEP.ViewModel = ""
 SWEP.WorldModel = model
 SWEP.ShowViewModel = true
 SWEP.ShowWorldModel = true
+
+local blur = Material("pp/blurscreen")
+local blurPanel
+
+local function DrawBlur(amount)
+    if not blurPanel then
+        blurPanel = vgui.Create("DPanel")
+        blurPanel:SetSize(ScrW(), ScrH())
+        blurPanel:SetPos(0, 0)
+        blurPanel:SetVisible(false)
+    end
+
+    local x, y = blurPanel:LocalToScreen(0, 0)
+    local scrW, scrH = ScrW(), ScrH()
+    surface.SetDrawColor(255, 255, 255)
+    surface.SetMaterial(blur)
+    for i = 1, 3 do
+        blur:SetFloat("$blur", (i / 3) * (amount or 6))
+        blur:Recompute()
+        render.UpdateScreenEffectTexture()
+        surface.DrawTexturedRect(x * -1, y * -1, scrW, scrH)
+    end
+end
+
 hook.Add("PostPlayerDraw", "ctx_096_bag_draw", function(ply)
     if not IsValid(ply) or not ply:Alive() then return end
     if guthscp096.is_scp_096(ply) and ctx096bag.is_scp_096_bagged(ply) then
@@ -75,30 +99,25 @@ end
 
 hook.Add("HUDPaint", "ctx_096_bag_effects", function()
     local ply = LocalPlayer()
-    if guthscp096.is_scp_096(ply) and ctx096bag.is_scp_096_bagged(ply) then
-        -- Black Screen on SCP 096 when bag equiped
+    if guthscp096.is_scp_096(ply) and ctx096bag.is_scp_096_bagged(ply) and config.bageffect then
+        -- Black Screen on SCP 096 when bag equipped
         local tab = {
-            ["$pp_colour_brightness"] = 0,
-            ["$pp_colour_contrast"] = 0,
+            ["$pp_colour_brightness"] = config.postprocessbrightness or 0,
+            ["$pp_colour_contrast"] = config.postprocesscontrast or 0,
         }
 
-        DrawColorModify(tab)
-        ctx096bag_progressbar()
-    end
-end)
-
-hook.Add("KeyPress", "ctx_096_bag_keypress", function(ply, key)
-    if guthscp096.is_scp_096(ply) and key == IN_USE then
-        if input.IsKeyDown(KEY_E) then
-            progress = progress + config.progressbar_threshold
-        else
-            progress = 0
+        local blurAmount = 0.1 -- Adjust this value as needed
+        if config.postprocesseffect then
+            DrawColorModify(tab)
+        end
+        if config.blureffect then
+            DrawBlur(config.bluramount or 6) -- Adjust the amount as needed
         end
     end
 end)
 
 hook.Add("PostPlayerDraw", "ctx_096_drawhud", function()
-    -- hud renderer when the holder of the bag have equiped it and looking SCP 096
+    -- hud renderer when the holder of the bag have equipped it and looking SCP 096
     local angle = EyeAngles()
     angle = Angle(0, angle.y, 0)
     angle:RotateAroundAxis(angle:Up(), -90)
