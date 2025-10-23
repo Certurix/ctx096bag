@@ -73,7 +73,7 @@ local function Use(ply, key)
 				else
 					if tool == "ctx_096_bag" then
 						target:Give("ctx_096_bag")
-						ctx096bag.notification(ply, NOTIFY_GENERIC, 8, config.textnolongerhavebag)
+						ctx096bag.notification(ply, NOTIFY_GENERIC, 8, config.textnowhavebag)
 						ply:StripWeapon("ctx_096_bag")
 					end
 				end
